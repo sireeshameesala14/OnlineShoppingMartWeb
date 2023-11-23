@@ -1,0 +1,45 @@
+﻿﻿@{
+    ViewData["Title"] = "Order Successfull";
+}
+@using OnlineShoppingMartWeb.ResponseModels;
+@model CheckoutSaveResponse
+
+<div class="mb-3 mb-md-0 w-xl-40" style="margin-top:50px;margin-left:450px;padding-bottom:50px">
+    <div class="border-bottom border-color-1 mb-3">
+        <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Order Details</h3>
+    </div>
+    <table class="table mb-3 mb-md-0">
+        <tbody>
+            <tr class="cart-subtotal">
+                <th>Order Id</th>
+                <td data-title="Subtotal"><span class="amount">@Model.OrderId</span></td>
+            </tr>
+            <tr class="shipping">
+                <th>Order Status</th>
+                <td data-title="Shipping">
+                    <span class="amount">@Model.OrderStatus</span>
+                </td>
+            </tr>
+            <tr class="shipping">
+                <th>Shipping Status</th>
+                <td data-title="Shipping">
+                    <span class="amount">@Model.ShippingStatus</span>
+                </td>
+            </tr>
+            @{
+                var paymentStatus = @Model.IsPaymentSuccessful ? "Paid" : "Pending";
+            }
+            <tr class="shipping">
+                <th>Payment Status</th>
+                <td data-title="Shipping">
+                    <span class="amount">@paymentStatus</span>
+                </td>
+            </tr>
+            <tr class="order-total">
+                <th>Order Total Amount</th>
+                <td data-title="Total"><strong><span class="amount">$ @Model.TotalOrderPrice.ToString("N2")</span></strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
